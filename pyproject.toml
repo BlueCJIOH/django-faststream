@@ -11,4 +11,5 @@ dependencies = [
   "uvicorn[standard]",
   "djangorestframework>=3.16.1",
   "httpx",
+  "starlette",
 ]

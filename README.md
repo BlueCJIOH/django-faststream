@@ -6,11 +6,6 @@ The project structure follows the layout used in the
 repository: source code lives under `src/`, apps are kept inside `src/apps`,
 and project configuration is stored in `src/core`.
 
-The ASGI application is managed by
-[`django-asgi-lifespan`](https://github.com/illagrenan/django-asgi-lifespan),
-which exposes startup/shutdown events. A shared `httpx.AsyncClient` is
-created at startup and injected into `request.state` so views can reuse it
-without re-instantiating a client on each request.
 
 ## Requirements
 
@@ -26,13 +21,11 @@ Build and start the application with Kafka:
 make up
 ```
 
-The Django server will be available at <http://localhost:8000>.
+The command runs `collectstatic` and starts Uvicorn. The Django server will be
+available at <http://localhost:8000>.
 
 ## FastStream
 
-The FastStream application is defined in `apps/faststream_app/stream.py` and
-subscribes to the `test-topic` Kafka topic. Because Django's ASGI lifespan is
-enabled, the FastStream process starts and stops with the Django server.
 Incoming messages are logged to the container output.
 
 Use the Django REST Framework endpoint to publish a test message:

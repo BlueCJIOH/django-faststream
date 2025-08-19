@@ -1,7 +1,9 @@
 services:
   web:
     build: .
-    command: uv run uvicorn core.asgi:application --host 0.0.0.0 --port 8002 --lifespan on
+    command: >-
+      bash -c "uv run python manage.py collectstatic --noinput &&
+      uv run uvicorn core.asgi:app --host 0.0.0.0 --port 8000 --lifespan on"
     volumes:
       - ./src:/app/src
     ports:

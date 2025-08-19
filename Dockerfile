@@ -9,6 +9,7 @@ COPY pyproject.toml ./
 RUN uv pip install --system .
 
 COPY src ./src
+RUN uv run python src/manage.py collectstatic --noinput
 
 WORKDIR /app/src
-CMD ["uv", "run", "uvicorn", "core.asgi:application", "--host", "0.0.0.0", "--port", "8000", "--lifespan", "on"]
+CMD ["uv", "run", "uvicorn", "core.asgi:app", "--host", "0.0.0.0", "--port", "8000", "--lifespan", "on"]
