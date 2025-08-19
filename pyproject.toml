@@ -9,4 +9,6 @@ dependencies = [
   "faststream[kafka]>=0.5",
   "django-asgi-lifespan",
   "uvicorn[standard]",
+  "djangorestframework>=3.16.1",
+  "httpx",
 ]
