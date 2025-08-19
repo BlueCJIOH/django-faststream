@@ -6,7 +6,7 @@ RUN pip install --no-cache-dir uv
 
 WORKDIR /app
 COPY pyproject.toml ./
-RUN uv pip install --system django faststream[kafka] django-asgi-lifespan uvicorn[standard]
+RUN uv pip install --system .
 
 COPY src ./src
 
