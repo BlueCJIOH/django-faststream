@@ -9,7 +9,9 @@ services:
     ports:
       - "8002:8000"
     depends_on:
-      - kafka
+      kafka:
+        condition: service_healthy
+    restart: unless-stopped
   kafka:
     image: bitnami/kafka:3.6
     environment:
@@ -26,3 +28,10 @@ services:
       - ALLOW_PLAINTEXT_LISTENER=yes
     ports:
       - "9092:9092"
+    healthcheck:
+      test: ["CMD", "bash", "-lc", "/opt/bitnami/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --list | cat"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 30s
+    restart: unless-stopped

@@ -1,7 +1,11 @@
+import os
 from faststream import FastStream
 from faststream.kafka import KafkaBroker
 
-broker = KafkaBroker('kafka:9092')
+
+KAFKA_BOOTSTRAP = os.getenv("KAFKA_BOOTSTRAP_SERVERS", "kafka:9092")
+
+broker = KafkaBroker(KAFKA_BOOTSTRAP)
 faststream_app = FastStream(broker)
 
 @broker.subscriber('test-topic')
