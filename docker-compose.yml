@@ -1,12 +1,11 @@
-version: '3.9'
 services:
   web:
     build: .
-    command: uv run uvicorn core.asgi:application --host 0.0.0.0 --port 8000 --lifespan on
+    command: uv run uvicorn core.asgi:application --host 0.0.0.0 --port 8002 --lifespan on
     volumes:
       - ./src:/app/src
     ports:
-      - "8000:8000"
+      - "8002:8000"
     depends_on:
       - kafka
   kafka:
