@@ -1,12 +1,3 @@
-# Django FastStream Example
-
-Minimal Django project configured to run FastStream with a Kafka broker.
-The project structure follows the layout used in the
-[education-backend](https://github.com/tough-dev-school/education-backend/)
-repository: source code lives under `src/`, apps are kept inside `src/apps`,
-and project configuration is stored in `src/core`.
-
-
 ## Requirements
 
 - Docker
